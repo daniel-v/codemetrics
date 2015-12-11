@@ -1,0 +1,7 @@
+.idea
+.eclipse
+**/.packages
+**/.pub
+**/packages
+pubspec.lock
+**/*.swp
