@@ -15,12 +15,12 @@ more feature-complete code-analysis toolset.
 
 ## How to use
 
-For now, there is no pub package for this project, so you have to clone the project
+For now, there is no pub package for this project, so you have to clone it
 ```
-git clone THISPROJECTURL
-dart bin/main.dart --analysis-root=/path/to/your/package
+git clone https://github.com/daniel-v/codemetrics.git
+cd bin; dart main.dart --analysis-root=/path/to/your/package
 ```
-Internally, the package uses [glob](https://pub.dartlang.org/packages/glob) package to find dart files withing the *--analysis-root*
+Internally, [Codemetrics for Dart](https://github.com/daniel-v/codemetrics) uses [glob](https://pub.dartlang.org/packages/glob) package to find dart files within the *--analysis-root*
 folder with the `**.dart` glob. It will exclude all dart files in:
  * packages
  * .pub
