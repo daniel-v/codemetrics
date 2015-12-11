@@ -1,13 +1,13 @@
 part of codemetrics.reporter;
 
 class HtmlReporter implements AnalysisReporter {
-
   HtmlReporter(this.analysisRunner);
 
   StringBuffer getReport() {
     Document template = getHtmlTemplate();
     addReportData(template);
-    return new StringBuffer('<!DOCTYPE html>\n' + template.documentElement.outerHtml);
+    return new StringBuffer(
+        '<!DOCTYPE html>\n' + template.documentElement.outerHtml);
   }
 
   Document getHtmlTemplate() {
@@ -27,5 +27,6 @@ var analysisData = ${JSON.encode(analysisRunner.getResults())}
 
   final AnalysisRunner analysisRunner;
 
-  static const String _TEMPLATE_PATH = 'lib/reporter/assets/html_reporter_template.html';
+  static const String _TEMPLATE_PATH =
+      'lib/reporter/assets/html_reporter_template.html';
 }

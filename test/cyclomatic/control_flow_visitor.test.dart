@@ -27,7 +27,9 @@ main() {
     test('Complexity increment with known config option', () {
       var visitor = new ControlFlowVisitor(DEFAULT_CYCLOMATIC_CONFIG);
       expect(visitor.complexity, 1);
-      expect((){ visitor.increaseComplexity('ifStatement'); }, returnsNormally);
+      expect(() {
+        visitor.increaseComplexity('ifStatement');
+      }, returnsNormally);
       expect(visitor.complexity, 2);
     });
 

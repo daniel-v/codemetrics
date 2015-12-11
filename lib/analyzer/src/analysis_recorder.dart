@@ -1,7 +1,6 @@
 part of codemetrics.analyzer;
 
 abstract class AnalysisRecorder {
-
   void startRecordGroup(String groupName);
 
   void endRecordGroup();

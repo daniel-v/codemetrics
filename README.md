@@ -1,6 +1,6 @@
 # Codemetrics
 
-Codemetrics for Dart is a simple command line utility that provides some
+Codemetrics for [Dart](https://www.dartlang.org/) is a simple command line utility that provides some
 insight into the "quality" of code.
 
 It uses static analysis of the code to determine:

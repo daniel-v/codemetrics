@@ -1,7 +1,6 @@
 part of codemetrics.cyclomatic;
 
 class ScopedDeclaration {
-
   final Declaration declaration;
   final ClassDeclaration enclosingClass;
 
@@ -12,7 +11,6 @@ class ScopedDeclaration {
  * Recursive AST visitor implementation to collect methods/functions
  */
 class CallableAstVisitor extends RecursiveAstVisitor<Object> {
-
   final List<ScopedDeclaration> _declarations = [];
 
   ClassDeclaration enclosingClass;

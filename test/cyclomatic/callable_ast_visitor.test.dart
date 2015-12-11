@@ -33,7 +33,6 @@ bool _methodDeclarationFilter(Declaration dec) {
 
 main() {
   group('Callable AST visitor', () {
-
     CompilationUnit compUnit;
     CallableAstVisitor callableVisitor;
 
@@ -44,15 +43,21 @@ main() {
     });
 
     test('AST visit call', () {
-      expect(() { compUnit.visitChildren(callableVisitor); }, returnsNormally);
+      expect(() {
+        compUnit.visitChildren(callableVisitor);
+      }, returnsNormally);
     });
 
     test('Function found', () {
-      expect(callableVisitor.declarations.where(_functionDeclarationFilter).length, greaterThan(0));
+      expect(
+          callableVisitor.declarations.where(_functionDeclarationFilter).length,
+          greaterThan(0));
     });
 
     test('Method found', () {
-      expect(callableVisitor.declarations.where(_methodDeclarationFilter).length, greaterThan(0));
+      expect(
+          callableVisitor.declarations.where(_methodDeclarationFilter).length,
+          greaterThan(0));
     });
 
     test('Method found', () {

@@ -5,7 +5,6 @@ part of codemetrics.cyclomatic;
  * of a [Declaration]
  */
 class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
-
   /**
    * Complexity of each `Declaration`
    */
@@ -26,10 +25,11 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
    * Use [complexity] to read the complexity of a given [Declaration]
    */
   void increaseComplexity(String configOptionToConsider) {
-    if(!CYCLOMATIC_CONFIG_OPTIONS.contains(configOptionToConsider)) {
+    if (!CYCLOMATIC_CONFIG_OPTIONS.contains(configOptionToConsider)) {
       throw new ArgumentError.value(configOptionToConsider);
     }
-    _complexity += config.addedComplexityByControlFlowType[configOptionToConsider];
+    _complexity +=
+        config.addedComplexityByControlFlowType[configOptionToConsider];
   }
 
   @override
@@ -57,13 +57,11 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
     super.visitCatchClause(node);
   }
 
-
   @override
   visitConditionalExpression(ConditionalExpression node) {
     increaseComplexity('conditionalExpression');
     super.visitConditionalExpression(node);
   }
-
 
   @override
   visitForStatement(ForStatement node) {

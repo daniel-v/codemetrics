@@ -1,7 +1,6 @@
 part of codemetrics.reporter;
 
 class JsonReporter implements AnalysisReporter {
-
   JsonReporter(this.analysisRunner);
 
   StringBuffer getReport() {

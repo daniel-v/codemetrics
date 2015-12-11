@@ -21,18 +21,21 @@ const List<String> CYCLOMATIC_CONFIG_OPTIONS = const [
  * Configuration for Cyclomatic Complexity calculation
  */
 class CyclomaticConfig {
-
   final BuiltMap<String, int> addedComplexityByControlFlowType;
 
-  int get assertStatement => addedComplexityByControlFlowType['assertStatement'];
+  int get assertStatement =>
+      addedComplexityByControlFlowType['assertStatement'];
 
-  int get blockFunctionBody => addedComplexityByControlFlowType['blockFunctionBody'];
+  int get blockFunctionBody =>
+      addedComplexityByControlFlowType['blockFunctionBody'];
 
   int get catchClause => addedComplexityByControlFlowType['catchClause'];
 
-  int get conditionalExpression => addedComplexityByControlFlowType['conditionalExpression'];
+  int get conditionalExpression =>
+      addedComplexityByControlFlowType['conditionalExpression'];
 
-  int get forEachStatement => addedComplexityByControlFlowType['forEachStatement'];
+  int get forEachStatement =>
+      addedComplexityByControlFlowType['forEachStatement'];
 
   int get forStatement => addedComplexityByControlFlowType['forStatement'];
 
@@ -71,7 +74,6 @@ class CyclomaticConfig {
 }
 
 class CyclomaticConfigBuilder {
-
   bool _useAssertStatement = false;
   bool _useBlockFunctionBody = false;
   bool _useCatchClause = false;
