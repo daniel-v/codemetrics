@@ -1,19 +1,27 @@
 import 'package:codemetrics/codemetrics.dart';
 import 'package:glob/glob.dart';
-import 'dart:convert';
 import 'dart:io';
+import 'package:args/args.dart';
 
-const List<String> IGNORED_PATH_PARTS = const [ '.pub', 'packages' ];
+const List<String> IGNORED_PATH_PARTS = const [ '.pub', 'packages'];
 
 main(List<String> args) {
-  
-  var dartFiles = new Glob('**.dart').listSync(root: '/home/dvarga/Projects/easyling/pagetranslate/war/_el/dart/package/common/lib/src/workbench_util/', followLinks: false);
+  var parser = new ArgParser();
+  parser.addOption('report-format', allowed: ['html', 'js'],
+      defaultsTo: 'js', help: 'The format of the output of the analysis');
+  parser.addOption('analysis-root',
+      defaultsTo: './', help: 'Root path from which all dart files will be analyzed');
+  var arguments = parser.parse(args);
+
+  var dartFiles = new Glob('**.dart').listSync(
+      root: arguments['analysis-root'],
+      followLinks: false);
   dartFiles.removeWhere((FileSystemEntity entity) {
-    if(entity is! File)
+    if (entity is! File)
       return true;
-    if(entity is File) {
-      for(String ignoredPathPart in IGNORED_PATH_PARTS) {
-        if(entity.path.contains(ignoredPathPart))
+    if (entity is File) {
+      for (String ignoredPathPart in IGNORED_PATH_PARTS) {
+        if (entity.path.contains(ignoredPathPart))
           return true;
       }
     }
@@ -21,24 +29,21 @@ main(List<String> args) {
   });
 
   var dartFilePathes = dartFiles.map((FileSystemEntity entity) => entity.path).toList(growable: false);
-//
-//  Iterable<Source> dartSources = dartFilePathes.map((String path) {
-//    return new FileBasedSource(new JavaFile(path));
-//  }).toList();
-//  AnalysisContextImpl analysisContext = new AnalysisContextImpl();
-//  LibraryElementImpl libElement = new LibraryElementBuilder(analysisContext, new AnalysisErrorListener_NULL_LISTENER())
-//      .buildLibrary(new Library(analysisContext, new AnalysisErrorListener_NULL_LISTENER(), dartSources.first));
-//
-//  TypeProviderImpl typeProvider = new TypeProviderImpl(libElement);
-//  new ResolverVisitor(libElement, dartSources.first, null, new AnalysisErrorListener_NULL_LISTENER());
-
   var recorder = new CyclomaticAnalysisRecorder();
-
   var analyzer = new CyclomaticAnalyzer();
 
   CyclomaticAnalysisRunner runner = new CyclomaticAnalysisRunner(recorder, analyzer, dartFilePathes);
   runner.run();
-  print(new HtmlReporter(runner).getReport());
-
-//  print('${JSON.encode(runner.getResults())}');
+  AnalysisReporter reporter;
+  switch(arguments['report-format']){
+    case 'html':
+      reporter = new HtmlReporter(runner);
+      break;
+    case 'js':
+      reporter = new JsonReporter(runner);
+      break;
+    default:
+      throw new ArgumentError.value(arguments['report-format'], 'report-format');
+  }
+  stdout.write(reporter.getReport());
 }
