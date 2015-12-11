@@ -4,7 +4,7 @@ Codemetrics for Dart is a simple command line utility that provides some
 insight into the "quality" of code.
 
 It uses static analysis of the code to determine:
- * cyclomatic complexity
+ * [cyclomatic complexity](https://en.wikipedia.org/wiki/Cyclomatic_complexity)
 
 and provides different reporting serialization formats:
  * json
@@ -20,7 +20,7 @@ For now, there is no pub package for this project, so you have to clone the proj
 git clone THISPROJECTURL
 dart bin/main.dart --analysis-root=/path/to/your/package
 ```
-Internally, the package uses *glob* package to find dart files withing the *--analysis-root*
+Internally, the package uses [glob](https://pub.dartlang.org/packages/glob) package to find dart files withing the *--analysis-root*
 folder with the `**.dart` glob. It will exclude all dart files in:
  * packages
  * .pub
@@ -31,6 +31,7 @@ directories.
 
 For *html* output use the *--report-format=html* and for JSON use *--report-format=json*.
 A full command could look like this:
+
 `dart bin/main.dart --analysis-root=/path/to/your/package --report-format=html > /tmp/test.html`
 
 ## Looking for contributors
