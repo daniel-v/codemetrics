@@ -11,7 +11,8 @@ class HtmlReporter implements AnalysisReporter {
   }
 
   Document getHtmlTemplate() {
-    File templateFile = new File(_TEMPLATE_PATH);
+    String templatePath = path.join(Platform.packageRoot, _TEMPLATE_PATH);
+    File templateFile = new File(templatePath);
     String contents = templateFile.readAsStringSync();
     return parse(contents, sourceUrl: templateFile.uri.toString());
   }
@@ -26,5 +27,5 @@ var analysisData = ${JSON.encode(analysisRunner.getResults())}
 
   final AnalysisRunner analysisRunner;
 
-  static const String _TEMPLATE_PATH = '../lib/reporter/assets/html_reporter_template.html';
+  static const String _TEMPLATE_PATH = 'lib/reporter/assets/html_reporter_template.html';
 }
