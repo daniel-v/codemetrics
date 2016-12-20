@@ -18,6 +18,8 @@ more feature-complete code-analysis toolset.
 For now, there is no pub package for this project, so you have to clone it
 ```
 git clone https://github.com/daniel-v/codemetrics.git
+cd codemetrics
+pub get
 cd bin; dart main.dart --analysis-root=/path/to/your/package
 ```
 Internally, [Codemetrics for Dart](https://github.com/daniel-v/codemetrics) uses [glob](https://pub.dartlang.org/packages/glob) package to find dart files within the *--analysis-root*
