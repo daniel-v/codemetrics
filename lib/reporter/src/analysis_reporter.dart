@@ -1,7 +1,7 @@
 part of codemetrics.reporter;
 
 abstract class AnalysisReporter {
-  StringBuffer getReport();
+  Future<StringBuffer> getReport();
 
   AnalysisRunner get analysisRunner;
 }

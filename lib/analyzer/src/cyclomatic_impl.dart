@@ -66,7 +66,7 @@ class CyclomaticAnalysisRecorder extends Object implements AnalysisRecorder {
   }
 }
 
-class CyclomaticAnalyzer extends Object implements Analyzer {
+class CyclomaticAnalyzer extends Object implements Analyzer<CyclomaticAnalysisRecorder> {
   CyclomaticAnalysisRecorder _recorder;
 
   @override

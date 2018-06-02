@@ -1,5 +1,5 @@
 part of codemetrics.analyzer;
 
-abstract class Analyzer {
-  void runAnalysis(String filePath, AnalysisRecorder recorder);
+abstract class Analyzer<T extends AnalysisRecorder> {
+  void runAnalysis(String filePath, T recorder);
 }

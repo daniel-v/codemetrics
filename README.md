@@ -20,7 +20,7 @@ For now, there is no pub package for this project, so you have to clone it
 git clone https://github.com/daniel-v/codemetrics.git
 cd codemetrics
 pub get
-cd bin; dart main.dart --analysis-root=/path/to/your/package
+cd bin; dart codemetrics.dart --analysis-root=/path/to/your/package
 ```
 Internally, [Codemetrics for Dart](https://github.com/daniel-v/codemetrics) uses [glob](https://pub.dartlang.org/packages/glob) package to find dart files within the *--analysis-root*
 folder with the `**.dart` glob. It will exclude all dart files in:
@@ -29,12 +29,20 @@ folder with the `**.dart` glob. It will exclude all dart files in:
 
 directories.
 
+You can also install it as a global package:
+
+```
+pub global activate --source git https://github.com/daniel-v/codemetrics.git
+```
+
+Executable name is `dart-codemetrics`
+
 ### Reporting options
 
 For *html* output use the *--report-format=html* and for JSON use *--report-format=json*.
 A full command could look like this:
 
-`dart bin/main.dart --analysis-root=/path/to/your/package --report-format=html > /tmp/test.html`
+`dart bin/codemetrics.dart --analysis-root=/path/to/your/package --report-format=html > /tmp/test.html`
 
 ## Looking for contributors
 

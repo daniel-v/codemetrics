@@ -3,18 +3,18 @@ part of codemetrics.reporter;
 class HtmlReporter implements AnalysisReporter {
   HtmlReporter(this.analysisRunner);
 
-  StringBuffer getReport() {
-    Document template = getHtmlTemplate();
+  Future<StringBuffer> getReport() async {
+    Document template = await getHtmlTemplate();
     addReportData(template);
     return new StringBuffer(
         '<!DOCTYPE html>\n' + template.documentElement.outerHtml);
   }
 
-  Document getHtmlTemplate() {
-    String templatePath = path.join(Platform.packageRoot, _TEMPLATE_PATH);
-    File templateFile = new File(templatePath);
-    String contents = templateFile.readAsStringSync();
-    return parse(contents, sourceUrl: templateFile.uri.toString());
+  Future<Document> getHtmlTemplate() async {
+    var res = new Resource(
+        'package:codemetrics/reporter/assets/html_reporter_template.html');
+    var template = await res.readAsString();
+    return parse(template, sourceUrl: res.uri.toString());
   }
 
   void addReportData(Document template) {

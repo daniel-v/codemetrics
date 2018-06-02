@@ -13,8 +13,12 @@ dependencies:
   path: any
   html: any
   args: any
+  resource: any
 dev_dependencies:
   test: any
   mockito: any
+
+executables:
+  dart-codemetrics: codemtrics
 
 # FIXME: any -> version numbers

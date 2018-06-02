@@ -28,14 +28,14 @@ main(List<String> args) {
     return false;
   });
 
-  var dartFilePathes = dartFiles
+  var dartFilePaths = dartFiles
       .map((FileSystemEntity entity) => entity.path)
       .toList(growable: false);
   var recorder = new CyclomaticAnalysisRecorder();
   var analyzer = new CyclomaticAnalyzer();
 
   CyclomaticAnalysisRunner runner =
-      new CyclomaticAnalysisRunner(recorder, analyzer, dartFilePathes);
+      new CyclomaticAnalysisRunner(recorder, analyzer, dartFilePaths);
   runner.run();
   AnalysisReporter reporter;
   switch (arguments['report-format']) {
@@ -49,5 +49,5 @@ main(List<String> args) {
       throw new ArgumentError.value(
           arguments['report-format'], 'report-format');
   }
-  stdout.write(reporter.getReport());
+  reporter.getReport().then(stdout.write);
 }

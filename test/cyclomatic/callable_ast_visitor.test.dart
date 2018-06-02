@@ -23,12 +23,12 @@ class A {
 main() {}
 ''';
 
-bool _functionDeclarationFilter(Declaration dec) {
-  return dec is FunctionDeclaration;
+bool _functionDeclarationFilter(ScopedDeclaration dec) {
+  return dec.declaration is FunctionDeclaration;
 }
 
-bool _methodDeclarationFilter(Declaration dec) {
-  return dec is MethodDeclaration;
+bool _methodDeclarationFilter(ScopedDeclaration dec) {
+  return dec.declaration is MethodDeclaration;
 }
 
 main() {

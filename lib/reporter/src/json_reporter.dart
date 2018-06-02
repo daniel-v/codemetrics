@@ -3,7 +3,7 @@ part of codemetrics.reporter;
 class JsonReporter implements AnalysisReporter {
   JsonReporter(this.analysisRunner);
 
-  StringBuffer getReport() {
+  Future<StringBuffer> getReport() async {
     return new StringBuffer(JSON.encode(analysisRunner.getResults()));
   }
 
