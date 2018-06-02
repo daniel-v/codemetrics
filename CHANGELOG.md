@@ -2,6 +2,10 @@
 
 For a high level overview of what CodeMetrics is, please read [README.md](README.md)
 
+## v1.0.0-alpha - Prepping for pub release
+
+## v0.0.2 - Dart 2 updates
+
 ## v0.0.1 - Initial release
 
 **Please keep in mind, this is the first preview release of the software, things might break or might not function as intended**

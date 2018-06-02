@@ -10,9 +10,6 @@ and provides different reporting serialization formats:
  * json
  * html
 
-**WARNING:** This is a pre-alpha development preview of what is to become a
-more feature-complete code-analysis toolset.
-
 ## How to use
 
 For now, there is no pub package for this project, so you have to clone it
