@@ -3,25 +3,6 @@ library codemetrics.cyclomatic.test;
 import 'package:codemetrics/cyclomatic/cyclomatic.dart';
 import 'package:test/test.dart';
 
-const String _TEST_COMP_UNIT = '''
-class A {
-  void method() {
-    if(a()) {
-      print("a");
-    } else {
-      print("b");
-    }
-    if(b() || c()){
-      print("c");
-    } else {
-      print("d");
-    }
-  }
-}
-
-main() {}
-''';
-
 main() {
   group('Control flow AST visitor', () {
     test('Complexity increment with known config option', () {

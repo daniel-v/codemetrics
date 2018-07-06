@@ -28,8 +28,7 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
     if (!CYCLOMATIC_CONFIG_OPTIONS.contains(configOptionToConsider)) {
       throw new ArgumentError.value(configOptionToConsider);
     }
-    _complexity +=
-        config.addedComplexityByControlFlowType[configOptionToConsider];
+    _complexity += config.addedComplexityByControlFlowType[configOptionToConsider];
   }
 
   @override
@@ -42,8 +41,7 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
   visitBlockFunctionBody(BlockFunctionBody node) {
     Token tok = node.beginToken;
     while (tok != node.block.rightBracket) {
-      if (tok.matchesAny(
-          const [TokenType.AMPERSAND_AMPERSAND, TokenType.BAR_BAR])) {
+      if (tok.matchesAny(const [TokenType.AMPERSAND_AMPERSAND, TokenType.BAR_BAR])) {
         increaseComplexity('blockFunctionBody');
       }
       tok = tok.next;

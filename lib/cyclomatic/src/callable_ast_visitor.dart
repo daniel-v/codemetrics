@@ -17,8 +17,7 @@ class CallableAstVisitor extends RecursiveAstVisitor<Object> {
   /**
    * Get all the declarations collected
    */
-  BuiltList<ScopedDeclaration> get declarations =>
-      new BuiltList<ScopedDeclaration>(_declarations);
+  BuiltList<ScopedDeclaration> get declarations => new BuiltList<ScopedDeclaration>(_declarations);
 
   /**
    * Add a [Declaration] to a list which can be retrieved with [declarations]

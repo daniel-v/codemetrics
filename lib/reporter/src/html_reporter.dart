@@ -6,13 +6,11 @@ class HtmlReporter implements AnalysisReporter {
   Future<StringBuffer> getReport() async {
     Document template = await getHtmlTemplate();
     addReportData(template);
-    return new StringBuffer(
-        '<!DOCTYPE html>\n' + template.documentElement.outerHtml);
+    return new StringBuffer('<!DOCTYPE html>\n' + template.documentElement.outerHtml);
   }
 
   Future<Document> getHtmlTemplate() async {
-    var res = new Resource(
-        'package:codemetrics/reporter/assets/html_reporter_template.html');
+    var res = new Resource('package:codemetrics/reporter/assets/html_reporter_template.html');
     var template = await res.readAsString();
     return parse(template, sourceUrl: res.uri.toString());
   }
@@ -20,13 +18,10 @@ class HtmlReporter implements AnalysisReporter {
   void addReportData(Document template) {
     var scriptTag = template.createElement('script')
       ..text = '''
-var analysisData = ${JSON.encode(analysisRunner.getResults())}
+var analysisData = ${json.encode(analysisRunner.getResults())}
     ''';
     template.querySelector('head').append(scriptTag);
   }
 
   final AnalysisRunner analysisRunner;
-
-  static const String _TEMPLATE_PATH =
-      'lib/reporter/assets/html_reporter_template.html';
 }
