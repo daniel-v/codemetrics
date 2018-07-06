@@ -2,6 +2,12 @@
 
 For a high level overview of what CodeMetrics is, please read [README.md](README.md)
 
+## v1.0.0-alpha+1
+
+* Fixed a typo in the name of executable. It spells `codemetrics` now. Command line usage: `pub global run codemetrics`
+or `dart-codemetrics` if Pub's bin folder is added to PATH
+* Update dependencies to be compatible with 2.0.0-dev.67.0
+
 ## v1.0.0-alpha - Prepping for pub release
 
 ## v0.0.2 - Dart 2 updates
