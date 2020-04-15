@@ -1,11 +1,10 @@
 part of codemetrics.reporter;
 
-class JsonReporter implements AnalysisReporter {
-  JsonReporter(this.analysisRunner);
+class JsonReporter extends AnalysisReporter {
+  JsonReporter(String output, String root) : super(output, root);
 
-  Future<StringBuffer> getReport() async {
-    return new StringBuffer(json.encode(analysisRunner.getResults()));
+  @override
+  Future<void> generateReport(final Iterable<Map<String, dynamic>> data) async {
+    return StringBuffer(json.encode(data));
   }
-
-  final AnalysisRunner analysisRunner;
 }

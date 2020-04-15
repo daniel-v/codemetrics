@@ -14,6 +14,7 @@ class CallableAstVisitor extends RecursiveAstVisitor<Object> {
   final List<ScopedDeclaration> _declarations = [];
 
   ClassDeclaration enclosingClass;
+
   /**
    * Get all the declarations collected
    */

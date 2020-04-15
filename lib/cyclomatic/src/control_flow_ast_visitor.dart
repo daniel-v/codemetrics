@@ -35,6 +35,7 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
   visitAssertStatement(AssertStatement node) {
     increaseComplexity('assertStatement');
     super.visitAssertStatement(node);
+    return null;
   }
 
   @override
@@ -47,59 +48,76 @@ class ControlFlowVisitor extends RecursiveAstVisitor<Object> {
       tok = tok.next;
     }
     super.visitBlockFunctionBody(node);
+    return null;
   }
 
   @override
   visitCatchClause(CatchClause node) {
     increaseComplexity('catchClause');
     super.visitCatchClause(node);
+    return null;
   }
 
   @override
   visitConditionalExpression(ConditionalExpression node) {
     increaseComplexity('conditionalExpression');
     super.visitConditionalExpression(node);
+    return null;
   }
 
   @override
   visitForStatement(ForStatement node) {
     increaseComplexity('forStatement');
     super.visitForStatement(node);
+    return null;
   }
 
   @override
-  visitForEachStatement(ForEachStatement node) {
+  visitForEachPartsWithDeclaration(ForEachPartsWithDeclaration node) {
     increaseComplexity('forEachStatement');
-    super.visitForEachStatement(node);
+    super.visitForEachPartsWithDeclaration(node);
+    return null;
+  }
+
+  @override
+  visitForEachPartsWithIdentifier(ForEachPartsWithIdentifier node) {
+    increaseComplexity('forEachStatement');
+    super.visitForEachPartsWithIdentifier(node);
+    return null;
   }
 
   @override
   visitIfStatement(IfStatement node) {
     increaseComplexity('ifStatement');
     super.visitIfStatement(node);
+    return null;
   }
 
   @override
   visitSwitchDefault(SwitchDefault node) {
     increaseComplexity('switchDefault');
     super.visitSwitchDefault(node);
+    return null;
   }
 
   @override
   visitSwitchCase(SwitchCase node) {
     increaseComplexity('switchCase');
     super.visitSwitchCase(node);
+    return null;
   }
 
   @override
   visitWhileStatement(WhileStatement node) {
     increaseComplexity('whileStatement');
     super.visitWhileStatement(node);
+    return null;
   }
 
   @override
   visitYieldStatement(YieldStatement node) {
     increaseComplexity('yieldStatement');
     super.visitYieldStatement(node);
+    return null;
   }
 }

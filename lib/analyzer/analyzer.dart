@@ -1,8 +1,9 @@
 library codemetrics.analyzer;
 
-import '../cyclomatic/cyclomatic.dart';
 import 'package:analyzer/analyzer.dart';
 import 'package:built_collection/built_collection.dart';
+
+import '../cyclomatic/cyclomatic.dart';
 
 part 'src/analysis_recorder.dart';
 part 'src/analysis_runner.dart';

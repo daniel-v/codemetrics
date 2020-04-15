@@ -1,27 +1,48 @@
 part of codemetrics.reporter;
 
-class HtmlReporter implements AnalysisReporter {
-  HtmlReporter(this.analysisRunner);
+class HtmlReporter extends AnalysisReporter {
+  HtmlReporter(final String output, final String root) : super(output, root);
 
-  Future<StringBuffer> getReport() async {
-    Document template = await getHtmlTemplate();
-    addReportData(template);
-    return new StringBuffer('<!DOCTYPE html>\n' + template.documentElement.outerHtml);
+  Future<String> getHtmlTemplate() async {
+    final assetDir = await _getAssetsDir();
+    final f = File(p.join(assetDir.path, 'report_template_v2.html'));
+    final html = f.readAsString();
+    return html;
   }
 
-  Future<Document> getHtmlTemplate() async {
-    var res = new Resource('package:codemetrics/reporter/assets/html_reporter_template.html');
-    var template = await res.readAsString();
-    return parse(template, sourceUrl: res.uri.toString());
+  @override
+  Future<void> generateReport(List<Map<String, dynamic>> data) async {
+    final reports = transformData(data);
+    reports.forEach((r) => print('${r.toString()}'));
+
+    await _transferResource();
+
+    final String template = await getHtmlTemplate();
+    for (final d in data) {
+      // TODO:
+    }
+
+    final File f = File(p.join(_outputDir.path, 'index.html'));
+    await f.writeAsString(template);
   }
 
-  void addReportData(Document template) {
-    var scriptTag = template.createElement('script')
-      ..text = '''
-var analysisData = ${json.encode(analysisRunner.getResults())}
-    ''';
-    template.querySelector('head').append(scriptTag);
+  Future<void> _transferResource() async {
+    final Directory resourceDir = Directory(p.join(outputDir.path, 'resources'));
+    await resourceDir.create();
+
+    final assetsDir = await _getAssetsDir();
+    final List<FileSystemEntity> entities = assetsDir.listSync();
+    for (final FileSystemEntity e in entities) {
+      if (e.path.endsWith('.css') || e.path.endsWith('.js')) {
+        final File f = File(e.path);
+        f.copy(p.join(resourceDir.path, p.basename(f.path)));
+      }
+    }
   }
 
-  final AnalysisRunner analysisRunner;
+  Future<Directory> _getAssetsDir() async {
+    final Directory assetsDir = Directory('package:');
+    final String root = assetsDir.absolute.path.split('package:')[0];
+    return Directory(p.join(root, 'assets'));
+  }
 }

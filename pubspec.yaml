@@ -1,12 +1,12 @@
 name: codemetrics
-version: 1.0.0-alpha+1
-author: Daniel Varga-Hali <dvargahali@gmail.com>
+version: 2.0.0
+author: Aleksej Zaicev (alex.zaicef@gmail.com)
 
-homepage: https://github.com/daniel-v/codemetrics.git
+homepage: https://github.com/alexZaicev/codemetrics.git
 
-documentation: https://github.com/daniel-v/codemetrics.git
+documentation: https://github.com/alexZaicev/codemetrics.git
 
-description: >
+description:
   Codemetrics for Dart is a simple command line utility that provides some
   insight into the "quality" of code.
 
@@ -14,17 +14,17 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  analyzer: ^0.32.3
-  built_collection: ^3.0.0
-  glob: ^1.1.0
-  path: ^1.6.1
-  html: ^0.13.3
-  args: ^1.4.0
-  resource: ^2.1.0
+  analyzer: ^0.39.6
+  built_collection: ^4.3.2
+  glob: ^1.2.0
+  path: ^1.7.0
+  html: ^0.14.0+3
+  args: ^1.6.0
+  resource: ^2.1.6
 
 dev_dependencies:
-  test: ^1.0.0
-  mockito: any
+  test: ^1.14.2
+  mockito: ^4.1.1
 
 executables:
   dart-codemetrics: codemetrics

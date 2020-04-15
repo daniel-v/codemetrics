@@ -37,8 +37,7 @@ class CyclomaticAnalysisRecorder extends Object implements AnalysisRecorder {
   @override
   void startRecordGroup(String groupName) {
     if (_hasStartedGroup) {
-      throw new StateError(
-          'Cannot start a group while another one is started. Use `endRecordGroup` to close the opened one.');
+      throw new StateError('Cannot start a group while another one is started. Use `endRecordGroup` to close the opened one.');
     }
     if (groupName == null) {
       throw new ArgumentError.notNull('groupName');
@@ -102,8 +101,7 @@ class CyclomaticAnalyzer extends Object implements Analyzer<CyclomaticAnalysisRe
   }
 
   void recordDeclarationNamesFor(Iterable<ScopedDeclaration> declarations) {
-    _recorder.record(
-        "callables", declarations.map((ScopedDeclaration dec) => _getQualifiedName(dec)).toList(growable: false));
+    _recorder.record("callables", declarations.map((ScopedDeclaration dec) => _getQualifiedName(dec)).toList(growable: false));
   }
 
   void recordDeclarationComplexity(ScopedDeclaration dec, int complexity) {
