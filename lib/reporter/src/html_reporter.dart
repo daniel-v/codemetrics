@@ -34,6 +34,9 @@ class HtmlReporter extends AnalysisReporter {
     await f.writeAsString(template);
     // create sites
     await _createSites(reports);
+
+    // TODO: analyze individual methods inside DART file
+    // TODO: to give more info about the complexity analysis
   }
 
   Future<void> _createSites(final List<List<Report>> reports) async {
